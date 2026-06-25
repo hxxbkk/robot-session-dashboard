@@ -35,7 +35,7 @@ def make_session(session_idx: int):
         for i in range(frames):
             t = i / FPS
 
-            # 부드러운 가상 이동 경로
+            # 가상 이동 경로
             x += 0.005 + random.uniform(-0.001, 0.001)
             y = math.sin(t * 0.8) * 0.3 + random.uniform(-0.002, 0.002)
             z = 0.1 + math.cos(t * 0.5) * 0.05 + random.uniform(-0.001, 0.001)

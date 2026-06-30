@@ -64,3 +64,30 @@ def get_session_summary(session_id: str):
         "keyframes": keyframes,
         "lost_frames": lost_frames
     }
+
+@app.get("/sessions/{session_id}/trajectory")
+def get_session_trajectory(session_id: str):
+    session_dir = DATA_DIR / session_id
+    csv_path = session_dir / "camera_trajectory.csv"
+
+    if not csv_path.exists():
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    df = pd.read_csv(csv_path)
+
+    trajectory = []
+
+    for _, row in df.iterrows():
+        trajectory.append({
+            "timestamp": float(row["timestamp"]),
+            "x": float(row["x"]),
+            "y": float(row["y"]),
+            "z": float(row["z"]),
+            "is_keyframe": bool(row["is_keyframe"]),
+            "is_lost": bool(row["is_lost"])
+        })
+
+    return {
+        "id": session_id,
+        "points": trajectory
+    }

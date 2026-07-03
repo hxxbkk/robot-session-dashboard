@@ -1,7 +1,10 @@
+import SessionList from "@/components/SessionList";
+import SummaryCard from "@/components/SummaryCard";
 type Session = {
   id: string;
   has_metadata: boolean;
- };
+};
+
 export default async function Home() {
   const response = await fetch("http://127.0.0.1:8000/sessions");
   const sessions: Session[] = await response.json();
@@ -15,27 +18,9 @@ export default async function Home() {
       </header>
 
       <div className="flex gap-6">
-        <aside className="w-72 rounded-xl bg-white p-4 shadow-sm">
-          <h2 className="mb-4 text-lg font-semibold">Sessions</h2>
-
-          <div className="space-y-2">
-            {sessions.map((session) => (
-              <button
-                key={session.id}
-                className="w-full rounded-lg border border-gray-200 px-4 py-3 text-left hover:bg-gray-100"
-            >
-              {session.id}
-            </button>
-              ))}
-          </div>
-        </aside>
-
-        <section className="flex-1 rounded-xl bg-white p-6 shadow-sm">
-          <h2 className="text-xl font-semibold">Session Summary</h2>
-          <p className="mt-2 text-gray-600">
-            Select a session to view trajectory and summary metrics.
-          </p>
-        </section>
+        <SessionList sessions={sessions} />
+        <SummaryCard />
+        
       </div>
     </main>
   )

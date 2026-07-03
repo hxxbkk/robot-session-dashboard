@@ -30,7 +30,7 @@ def root():
 def get_sessions():
     sessions = []
 
-    for folder in DATA_DIR.iterdir():
+    for folder in sorted(DATA_DIR.iterdir()):
         if folder.is_dir():
             metadata_path = folder / "metadata.json"
 

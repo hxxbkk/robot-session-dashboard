@@ -13,5 +13,8 @@ backend/venv/
 # Node.js
 node_modules/
 
+# Next.js
+.next/
+
 # VSCode
 .vscode/

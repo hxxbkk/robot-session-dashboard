@@ -1,5 +1,7 @@
 import SessionList from "@/components/SessionList";
 import SummaryCard from "@/components/SummaryCard";
+import DashboardClient from "@/components/DashboardClient";
+
 type Session = {
   id: string;
   has_metadata: boolean;
@@ -17,11 +19,8 @@ export default async function Home() {
       </p>
       </header>
 
-      <div className="flex gap-6">
-        <SessionList sessions={sessions} />
-        <SummaryCard />
-        
-      </div>
+     <DashboardClient sessions={sessions} />
+     
     </main>
   )
 }

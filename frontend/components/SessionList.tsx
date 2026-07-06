@@ -1,3 +1,6 @@
+"use client";
+import {useState} from "react";
+
 type Session = {
   id: string;
   has_metadata: boolean;
@@ -10,6 +13,7 @@ type Session = {
  export default function SessionList({
     sessions,
  }: SessionListProps) {
+  const [selectedSession, setSelectedSession] = useState<string | null>(null);
     return (
         <aside className="w-72 rounded-xl bg-white p-4 shadow-sm">
           <h2 className="mb-4 text-lg font-semibold">Sessions</h2>
@@ -18,12 +22,16 @@ type Session = {
             {sessions.map((session) => (
               <button
                 key={session.id}
+                onClick={() => setSelectedSession(session.id)}
                 className="w-full rounded-lg border border-gray-200 px-4 py-3 text-left hover:bg-gray-100"
             >
               {session.id}
             </button>
               ))}
           </div>
+          <p className="mt-4 text-sm text-gray-500">
+            Selected: {selectedSession}
+          </p>
         </aside>
     );
  }

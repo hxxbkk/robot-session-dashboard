@@ -1,4 +1,7 @@
 "use client";
+import { useState } from "react";
+import SessionList from "./SessionList";
+import SummaryCard from "./SummaryCard";
 
 type Session = {
     id: string;
@@ -12,5 +15,9 @@ type DashboardClientProps = {
 export default function DashboardClient({
     sessions,
 }: DashboardClientProps) {
-    return <div>Dashboard Client</div>;
+    const [selectedSession, setSelectedSession] = useState<string | null>(null);
+    return <div className="flex gap-6">
+        <SessionList sessions={sessions} selectedSession={selectedSession} onSelectSession={setSelectedSession}/>
+        <SummaryCard />
+    </div>;
 }

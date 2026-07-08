@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SessionList from "./SessionList";
 import SummaryCard from "./SummaryCard";
 
@@ -23,12 +23,31 @@ type DashboardClientProps = {
 export default function DashboardClient({
     sessions,
 }: DashboardClientProps) {
+
     const [selectedSession, setSelectedSession] = useState<string | null>(null);
     const [summary, setSummary] = useState<Summary | null>(null);
 
+    useEffect(() => {
+        if (!selectedSession) {
+            setSummary(null);
+            return;
+        }
+
+        async function fetchSummary() {
+            const response = await fetch(
+                `http://127.0.0.1:8000/sessions/${selectedSession}/summary`
+            );
+
+            const data = await response.json();
+
+            setSummary(data);
+        }
+
+        fetchSummary();
+    }, [selectedSession]);
     
     return <div className="flex gap-6">
         <SessionList sessions={sessions} selectedSession={selectedSession} onSelectSession={setSelectedSession}/>
-        <SummaryCard />
+        <SummaryCard summary={summary}/>
     </div>;
 }

@@ -8,6 +8,14 @@ type Session = {
     has_metadata: boolean;
 }
 
+type Summary = {
+        id: string;
+        frames: number;
+        duration_sec: number;
+        keyframes: number;
+        lost_frames: number;
+    };
+
 type DashboardClientProps = {
     sessions: Session[];
 }
@@ -16,6 +24,9 @@ export default function DashboardClient({
     sessions,
 }: DashboardClientProps) {
     const [selectedSession, setSelectedSession] = useState<string | null>(null);
+    const [summary, setSummary] = useState<Summary | null>(null);
+
+    
     return <div className="flex gap-6">
         <SessionList sessions={sessions} selectedSession={selectedSession} onSelectSession={setSelectedSession}/>
         <SummaryCard />

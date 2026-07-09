@@ -37,8 +37,6 @@ export default function DashboardClient({
 
     useEffect(() => {
         if (!selectedSession) {
-            setSummary(null);
-            setTrajectory([]);
             return;
         }
 

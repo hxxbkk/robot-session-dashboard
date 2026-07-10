@@ -155,7 +155,7 @@ Response
 
 ## Dashboard
 
-(스크린샷 추가 예정)
+![Robot Session Dashboard](docs/dashboard.png)
 
 ---
 

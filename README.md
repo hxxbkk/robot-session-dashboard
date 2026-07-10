@@ -18,7 +18,7 @@ Session 목록 조회, 세션 요약 정보(Summary), Trajectory 시각화를 �
 
 ## 📷 Preview
 
-> 스크린샷 추가 예정
+![Robot Session Dashboard](docs/dashboard.png)
 
 ---
 
@@ -148,14 +148,6 @@ Response
 
 - Trajectory 데이터를 REST API로 조회
 - Recharts를 이용하여 Y/Z Position을 Line Chart로 시각화
-
----
-
-# 📸 Screenshots
-
-## Dashboard
-
-![Robot Session Dashboard](docs/dashboard.png)
 
 ---
 

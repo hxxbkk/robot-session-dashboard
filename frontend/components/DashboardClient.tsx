@@ -10,11 +10,11 @@ type Session = {
 }
 
 type Summary = {
-        id: string;
-        frames: number;
-        duration_sec: number;
-        keyframes: number;
-        lost_frames: number;
+    id: string;
+    frames: number;
+    duration_sec: number;
+    keyframes: number;
+    lost_frames: number;
     };
 
 type DashboardClientProps = {
@@ -64,10 +64,32 @@ export default function DashboardClient({
         fetchTrajectory();
     }, [selectedSession]);
     
-    return <div className="flex gap-6">
-        <SessionList sessions={sessions} selectedSession={selectedSession} onSelectSession={setSelectedSession}/>
-        
-        <div className="flex-1 space-y-6">
+    return <div className="flex items-start gap-6">
+        <SessionList 
+            sessions={sessions} 
+            selectedSession={selectedSession} 
+            onSelectSession={setSelectedSession}
+        />
+
+        <div className="min-w-0 flex-1 space-y-6">
+            <div className="flex items-center justify-between rounded-2xl border border-gray-200 bg-white px-5 py-4 shadow-sm">
+                <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+                        Current session
+                    </p>
+
+                    <p className="mt-1 font-semibold text-gray-900">
+                        {selectedSession ?? "No session selected"}
+                    </p>
+                </div>
+
+                {selectedSession && (
+                    <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
+                        Active
+                    </span>
+                )}
+            </div>
+
             <SummaryCard summary={summary}/>
             <TrajectoryChart trajectory={trajectory} />
         </div>     

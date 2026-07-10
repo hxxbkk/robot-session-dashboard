@@ -42,7 +42,7 @@ export default function DashboardClient({
 
         async function fetchSummary() {
             const response = await fetch(
-                `http://127.0.0.1:8000/sessions/${selectedSession}/summary`
+                `https://robot-session-dashboard-api.onrender.com/sessions/${selectedSession}/summary`
             );
 
             const data = await response.json();
@@ -52,7 +52,7 @@ export default function DashboardClient({
 
         async function fetchTrajectory() {
             const response = await fetch(
-                `http://127.0.0.1:8000/sessions/${selectedSession}/trajectory`
+                `https://robot-session-dashboard-api.onrender.com/sessions/${selectedSession}/trajectory`
             );
 
             const data = await response.json();

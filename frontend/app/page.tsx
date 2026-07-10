@@ -6,7 +6,7 @@ type Session = {
 };
 
 export default async function Home() {
-  const response = await fetch("http://127.0.0.1:8000/sessions", {
+  const response = await fetch("https://robot-session-dashboard-api.onrender.com/sessions", {
     cache: "no-store",
   });
   const sessions: Session[] = await response.json();

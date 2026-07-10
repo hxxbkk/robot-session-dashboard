@@ -9,10 +9,14 @@ Session 목록 조회, 세션 요약 정보(Summary), Trajectory 시각화를 �
 
 ## 🚀 Demo
 
-> 배포 후 링크 추가 예정
+- Frontend
+https://robot-session-dashboard.vercel.app/
 
-- Frontend : https://robot-session-dashboard.vercel.app/
-- Backend : https://robot-session-dashboard-api.onrender.com/
+- Backend API
+https://robot-session-dashboard-api.onrender.com/
+
+- API Documentation (Swagger)
+https://robot-session-dashboard-api.onrender.com/docs
 
 ---
 

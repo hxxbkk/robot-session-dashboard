@@ -186,5 +186,3 @@ npm run dev
 - AI Insight 기능 추가
 - Trajectory 분석 기능
 - Session Filtering 기능 강화
-- 실제 Robot Dataset 연동
-- Dashboard 배포(Vercel / Render)
